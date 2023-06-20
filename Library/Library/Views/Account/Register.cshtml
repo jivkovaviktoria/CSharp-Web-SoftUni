@@ -1,38 +1,62 @@
-﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
-@model Library.Models.Identity.RegisterRequest
+﻿@model Library.Models.Identity.RegisterRequest
 
 @{
     ViewData["Title"] = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 class="text-center">@ViewData["Title"]</h1>
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
 
+    <style>
+        body {
+            background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGWHNhM1iOn_8rU88QAwZt0pZiCefTSvyB2Q&usqp=CAU");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
 
-<div class="row">
-    <div class="col-md-4 offset-md-4">
-        <h1>Create a new account</h1>
-        <form id="registerForm" method="post">
-            <hr/>
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="text-center mb-3">
-                <label asp-for="@Model.Email">Email</label>
-                <input class="form-control " autocomplete="username" aria-required="true" asp-for="@Model.Email"/>
-                <span asp-validation-for="@Model.Email" class="text-danger"></span>
-            </div>
-            <div class="text-center mb-3">
-                <label asp-for="@Model.Password">Password</label>
-                <input class="form-control" type="password" autocomplete="new-password" aria-required="true" asp-for="@Model.Password"/>
-                <span asp-validation-for="@Model.Password" class="text-danger"></span>
-            </div>
-            <div class="text-center mb-3">
-                <label asp-for="@Model.ConfirmPassword">Confirm Password</label>
-                <input class="form-control" type="password" autocomplete="new-password" aria-required="true" asp-for="@Model.ConfirmPassword"/>
-                <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
-            </div>
-            <div class="text-center">
-                <button id="registerSubmit" type="submit" class="btn btn-primary">Register</button>
-            </div>
-        </form>
+        .register-form {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        .register-heading {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #333;
+        }
+    </style>
+}
+
+    <h1 class="register-heading">@ViewData["Title"]</h1>
+
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <form id="registerForm" method="post" class="register-form">
+                <hr />
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Email">Email</label>
+                    <input class="form-control" autocomplete="username" aria-required="true" asp-for="@Model.Email" />
+                    <span asp-validation-for="@Model.Email" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.Password">Password</label>
+                    <input class="form-control" type="password" autocomplete="new-password" aria-required="true" asp-for="@Model.Password" />
+                    <span asp-validation-for="@Model.Password" class="text-danger"></span>
+                </div>
+                <div class="mb-3">
+                    <label asp-for="@Model.ConfirmPassword">Confirm Password</label>
+                    <input class="form-control" type="password" autocomplete="new-password" aria-required="true" asp-for="@Model.ConfirmPassword" />
+                    <span asp-validation-for="@Model.ConfirmPassword" class="text-danger"></span>
+                </div>
+                <div class="text-center">
+                    <button id="registerSubmit" type="submit" class="btn btn-primary">Register</button>
+                </div>
+            </form>
+        </div>
     </div>
-</div>
 
